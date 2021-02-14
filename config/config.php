@@ -2,15 +2,19 @@
 
 declare(strict_types=1);
 
+use Dotenv\Dotenv;
 use Laminas\ConfigAggregator\ArrayProvider;
 use Laminas\ConfigAggregator\ConfigAggregator;
 use Laminas\ConfigAggregator\PhpFileProvider;
+use Shorty\Application\Config\ConfigProvider;
 
 // To enable or disable caching, set the `ConfigAggregator::ENABLE_CACHE` boolean in
 // `config/autoload/local.php`.
 $cacheConfig = [
     'config_cache_path' => 'data/cache/config-cache.php',
 ];
+
+$dotenv = Dotenv::createImmutable(realpath(__DIR__ . '/..'))->load();
 
 $aggregator = new ConfigAggregator(
     [
@@ -32,7 +36,7 @@ $aggregator = new ConfigAggregator(
             return [];
         },
 
-        \Shorty\Application\ConfigProvider::class,
+        ConfigProvider::class,
 
         // Load application config in a pre-defined order in such a way that local settings
         // overwrite global settings. (Loaded as first to last):

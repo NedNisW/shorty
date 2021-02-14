@@ -5,5 +5,17 @@
     </head>
     <body>
         <h1>Shortlink generator for {{ project_title }}</h1>
+        <div>
+            <form name="new-link" method="post" action="/new">
+                <input type="url" name="long" placeholder="zu verkürzende URL">
+                <input type="number" name="pin">
+                <button type="submit">Absenden</button>
+            </form>
+        </div>
+        <div>
+            {% if short_link is defined %}
+                <a href="{{ short_link }}">{{ short_link }}</a>
+            {% endif %}
+        </div>
     </body>
 </html>

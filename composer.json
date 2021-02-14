@@ -32,7 +32,9 @@
     "require": {
         "php": "^7.4",
         "composer/package-versions-deprecated": "^1.10.99",
+        "doctrine/orm": "^2.8",
         "elie29/zend-phpdi-config": "^6.0",
+        "ircmaxell/random-lib": "^1.2",
         "laminas/laminas-component-installer": "^2.1.2",
         "laminas/laminas-config-aggregator": "^1.2",
         "laminas/laminas-diactoros": "^2.3.0",
@@ -42,7 +44,9 @@
         "mezzio/mezzio-fastroute": "^3.0.3",
         "mezzio/mezzio-helpers": "^5.3",
         "mezzio/mezzio-twigrenderer": "^2.6",
-        "robmorgan/phinx": "^0.12.5"
+        "myclabs/php-enum": "^1.7",
+        "robmorgan/phinx": "^0.12.5",
+        "vlucas/phpdotenv": "^5.3"
     },
     "require-dev": {
         "laminas/laminas-development-mode": "^3.2",

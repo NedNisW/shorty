@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Shorty\Application\Service;
+namespace Shorty\Application\Config;
 
 /**
  * Class ConfigService
@@ -38,5 +38,21 @@ class ConfigService
         } while (count($stages) > 0);
 
         return $value;
+    }
+
+    public function isDevelop(): bool
+    {
+        /** @var EnvironmentsEnum $env */
+        $env = $this->getByPath('environment');
+
+        return $env->getValue() === EnvironmentsEnum::DEVELOP;
+    }
+
+    public function isProduction(): bool
+    {
+        /** @var EnvironmentsEnum $env */
+        $env = $this->getByPath('environment');
+
+        return $env->getValue() === EnvironmentsEnum::PRODUCTION;
     }
 }

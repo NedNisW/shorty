@@ -1,9 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Shorty\Application\Service;
+namespace Shorty\Application\Config;
 
 use Psr\Container\ContainerInterface;
+use Shorty\Application\Config\ConfigService;
 
 /**
  * Class ConfigServiceFactory

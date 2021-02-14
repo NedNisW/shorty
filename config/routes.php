@@ -5,7 +5,9 @@ declare(strict_types=1);
 use Mezzio\Application;
 use Mezzio\MiddlewareFactory;
 use Psr\Container\ContainerInterface;
+use Shorty\Application\Handler\HashLookupHandler;
 use Shorty\Application\Handler\LandingPageHandler;
+use Shorty\Application\Handler\NewUrlHandler;
 
 /**
  * FastRoute route configuration
@@ -39,4 +41,6 @@ use Shorty\Application\Handler\LandingPageHandler;
  */
 return static function (Application $app, MiddlewareFactory $factory, ContainerInterface $container): void {
     $app->get('/', LandingPageHandler::class, 'landing_page');
+    $app->post('/new', NewUrlHandler::class, 'new_url');
+    $app->get('/s/{hash}', HashLookupHandler::class, 'hash_lookup');
 };
