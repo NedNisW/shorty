@@ -1,0 +1,58 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    max-width: 100%;
+    box-sizing: border-box;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+body {
+    background: url('../img/bg_landing.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+@media (max-width: 768px) {
+    body {
+        background: url('../img/bg_landing_sm.jpg') no-repeat center center fixed;
+    }
+}
+
+.short-url-container {
+    margin-top: 30vh;
+}
+
+.new-link-form {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 7px;
+}
+
+.short-link-box {
+    background-color: #ffc107;
+    border-radius: .25rem;
+}
+
+@media (min-width: 769px) {
+    .short-link-box {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .short-alert-copy-btn {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .target-url-input {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .new-url-button {
+
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}

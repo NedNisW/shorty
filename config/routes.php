@@ -42,5 +42,5 @@ use Shorty\Application\Handler\NewUrlHandler;
 return static function (Application $app, MiddlewareFactory $factory, ContainerInterface $container): void {
     $app->get('/', LandingPageHandler::class, 'landing_page');
     $app->post('/new', NewUrlHandler::class, 'new_url');
-    $app->get('/s/{hash}', HashLookupHandler::class, 'hash_lookup');
+    $app->get('/{hash}', HashLookupHandler::class, 'hash_lookup');
 };

@@ -4,14 +4,12 @@ declare(strict_types=1);
 namespace Shorty\Application\Handler;
 
 use Doctrine\ORM\EntityManager;
-use Laminas\Diactoros\Response\HtmlResponse;
-use Laminas\Diactoros\Response\RedirectResponse;
+use Laminas\Diactoros\Response\JsonResponse;
 use Mezzio\Template\TemplateRendererInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Shorty\Application\Entity\ShortUrl;
-use Shorty\Application\Entity\ShortUrlsEntityListener;
 use Shorty\Application\Service\ShortUrlService;
 
 /**
@@ -53,7 +51,10 @@ class NewUrlHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $target = $request->getParsedBody()['long'];
+        $target = $request->getParsedBody()['target'];
+        if (empty($target) === true) {
+            return new JsonResponse(['message' => 'Target must not be empty!'], 400);
+        }
 
         $shortUrl = new ShortUrl();
         $shortUrl->setTarget($target);
@@ -61,11 +62,11 @@ class NewUrlHandler implements RequestHandlerInterface
         $this->entityManager->persist($shortUrl);
         $this->entityManager->flush();
 
-        return new HtmlResponse(
-            $this->renderer->render(
-                '@shorty/index.html.twig',
-                ['short_link' => $this->shortUrlService->receiveUri($shortUrl)]
-            )
+        return new JsonResponse(
+            [
+                'target' => $target,
+                'short' => $this->shortUrlService->receiveUri($shortUrl)
+            ]
         );
     }
 

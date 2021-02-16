@@ -9,7 +9,7 @@ return [
     ],
     'templates' => [
         'paths' => [
-            'shorty' => realpath(__DIR__ . '/../../templates')
+            realpath(__DIR__ . '/../../templates')
         ]
     ]
 ];

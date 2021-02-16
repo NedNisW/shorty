@@ -34,7 +34,7 @@ class LandingPageHandler implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         return new Response\HtmlResponse(
-            $this->renderer->render('@shorty/index.html.twig')
+            $this->renderer->render('index.html.twig')
         );
     }
 
